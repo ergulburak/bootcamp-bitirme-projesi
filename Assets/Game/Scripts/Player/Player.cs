@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
-public class Player : MonoBehaviour
+public class Player : Singleton<Player> //MonoBehaviour singleton'a çevirdim.
 {
     public bool PlayerCanMove;
     public event EventHandler OnFinish;
