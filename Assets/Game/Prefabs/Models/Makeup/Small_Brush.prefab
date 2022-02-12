@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1975944147853798028}
   - component: {fileID: 3225752910891148585}
   - component: {fileID: 801880871346475491}
+  - component: {fileID: 5685258155110512764}
   m_Layer: 0
   m_Name: Small_Brush
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1161970585671446582}
   m_LocalRotation: {x: -0, y: -0, z: -0.20233405, w: 0.9793166}
   m_LocalPosition: {x: -1.131, y: -0.872, z: 0.044}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8938651569383488871}
   m_Father: {fileID: 0}
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5685258155110512764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161970585671446582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ab8aab2525456abbc63420efb8a106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeadLevel: 0
 --- !u!1 &5306689337340075899
 GameObject:
   m_ObjectHideFlags: 0

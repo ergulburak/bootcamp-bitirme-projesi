@@ -1,13 +1,16 @@
 ﻿using System;
+using Game.Scripts.Collectables;
+using Game.Scripts.Player;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerStackManager))]
 public class Player : Singleton<Player> //MonoBehaviour singleton'a çevirdim.
 {
     public bool PlayerCanMove;
     public event EventHandler OnFinish;
-    
+
     private PlayerMovement _playerMovement => GetComponent<PlayerMovement>();
+    private PlayerStackManager _playerStackManager => GetComponent<PlayerStackManager>();
     private bool onFirstClick = true;
 
     private void Awake()
@@ -46,6 +49,14 @@ public class Player : Singleton<Player> //MonoBehaviour singleton'a çevirdim.
         {
             onFirstClick = false;
             PlayerCanMove = !PlayerCanMove;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out CollectableBase collectable))
+        {
+            _playerStackManager.CollectBead(collectable);
         }
     }
 }

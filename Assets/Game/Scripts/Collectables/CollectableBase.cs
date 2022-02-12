@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Game.Scripts.Collectables
@@ -13,12 +14,27 @@ namespace Game.Scripts.Collectables
 
         private void Start()
         {
-            activeModelSet = collectableModelSets.First();
+            if (activeModelSet == null) activeModelSet = collectableModelSets.First();
+
+            collectableModelSets.ForEach(x =>
+            {
+                x.gameObject.SetActive(false);
+                if (x.Type == activeModelSet.Type)
+                {
+                    x.gameObject.SetActive(true);
+                    ChangeModel(activeBeadLevel);
+                }
+            });
         }
 
         private void OnEnable()
         {
             ModelManager.Instance.OnGateEnterEvent += ChangeModelSet;
+        }
+
+        private void OnDisable()
+        {
+            ModelManager.Instance.OnGateEnterEvent -= ChangeModelSet;
         }
 
         public BeadType GetBeadLevel()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3780531778555868566}
   - component: {fileID: 277250696471575091}
   - component: {fileID: 2610972071479086841}
+  - component: {fileID: 1178150578286047887}
   m_Layer: 0
   m_Name: Small_Sword1
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4556786525611077420}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.903, y: -0.194, z: 0.031}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 816873691341179856}
   m_Father: {fileID: 0}
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1178150578286047887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4556786525611077420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ab8aab2525456abbc63420efb8a106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BeadLevel: 1
 --- !u!1 &5416686193172533869
 GameObject:
   m_ObjectHideFlags: 0
