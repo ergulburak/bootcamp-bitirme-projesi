@@ -68,9 +68,14 @@ namespace Game.Scripts.Player
                 ModelManager.Instance.FireGateEnterEvent(gate.ModelType);
             }
 
-            if (other.TryGetComponent(out ObstacleBase obstacle))
+            if (other.TryGetComponent(out ObstacleScissors obstacleScissors))
             {
                 _playerStackManager.ThrowBead();
+            }
+
+            if (other.TryGetComponent(out ObstacleHook obstacleHook))
+            {
+                _playerStackManager.StealBead(obstacleHook);
             }
         }
     }

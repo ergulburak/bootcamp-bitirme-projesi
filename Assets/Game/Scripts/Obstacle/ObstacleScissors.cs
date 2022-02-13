@@ -2,7 +2,7 @@
 
 namespace Game.Scripts.Obstacle
 {
-    public class ObstacleBase : MonoBehaviour
+    public class ObstacleScissors : MonoBehaviour
     {
         
     }

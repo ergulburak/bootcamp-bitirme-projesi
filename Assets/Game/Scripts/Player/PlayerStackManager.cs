@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using Game.Scripts.Collectables;
+using Game.Scripts.Obstacle;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -47,6 +48,20 @@ namespace Game.Scripts.Player
             {
                 Destroy(targetCollectableTransform.gameObject);
             });
+        }
+
+        public void StealBead(ObstacleHook obstacleHook)
+        {
+            var collectable = filledPoints.First();
+
+            stackPoints.Insert(0, collectable.Key);
+            filledPoints.Remove(collectable.Key);
+
+            var targetCollectableTransform = collectable.Value.transform;
+            var targetTransform = obstacleHook.HookTransform;
+
+            targetCollectableTransform.parent = targetTransform;
+            targetCollectableTransform.DOLocalMove(Vector3.zero, 0.2f).OnComplete(obstacleHook.RunAway);
         }
     }
 }
