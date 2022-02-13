@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Game.Scripts.Collectables;
 using Game.Scripts.Gates;
 using Game.Scripts.MeshChangerSystem;
@@ -31,8 +32,14 @@ namespace Game.Scripts.Player
             }
         }
 
-        public void OnWin()
+        private void OnWin(Finish finish)
         {
+            PlayerCanMove = false;
+            _playerMovement.PlayerPivot.SetParent(finish.finishPoint);
+            _playerMovement.PlayerPivot.DOLocalMove(Vector3.zero, 1f).OnComplete(() =>
+            {
+                finish.animator.SetBool("Cheer", true);
+            });
             OnFinish?.Invoke(this, EventArgs.Empty);
         }
 
@@ -49,11 +56,10 @@ namespace Game.Scripts.Player
 
         private void OnFirstClick(object sender, bool e)
         {
-            if (onFirstClick)
-            {
-                onFirstClick = false;
-                PlayerCanMove = !PlayerCanMove;
-            }
+            if (!onFirstClick) return;
+
+            onFirstClick = false;
+            PlayerCanMove = !PlayerCanMove;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -76,6 +82,11 @@ namespace Game.Scripts.Player
             if (other.TryGetComponent(out ObstacleHook obstacleHook))
             {
                 _playerStackManager.StealBead(obstacleHook);
+            }
+
+            if (other.TryGetComponent(out Finish finish))
+            {
+                OnWin(finish);
             }
         }
     }
