@@ -414,6 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5511784145046665001}
+  - component: {fileID: 2537877136229338427}
   m_Layer: 0
   m_Name: ModelRoot
   m_TagString: Untagged
@@ -437,6 +438,19 @@ Transform:
   m_Father: {fileID: 5511784146063104443}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2537877136229338427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5511784145046664998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Center: {x: 0, y: -0.9, z: 0}
 --- !u!1 &5511784146063104438
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +464,6 @@ GameObject:
   - component: {fileID: 8928883658528933924}
   - component: {fileID: 5511784146063104441}
   - component: {fileID: 8129638710597183186}
-  - component: {fileID: 4876935111016668451}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -543,19 +556,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4876935111016668451
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5511784146063104438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.06, y: 2.5, z: 0.5}
-  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!1 &5511784146193830084
 GameObject:
   m_ObjectHideFlags: 0

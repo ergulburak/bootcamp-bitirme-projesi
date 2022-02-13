@@ -1,62 +1,71 @@
 ﻿using System;
 using Game.Scripts.Collectables;
-using Game.Scripts.Player;
+using Game.Scripts.Gates;
+using Game.Scripts.MeshChangerSystem;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerStackManager))]
-public class Player : Singleton<Player> //MonoBehaviour singleton'a çevirdim.
+namespace Game.Scripts.Player
 {
-    public bool PlayerCanMove;
-    public event EventHandler OnFinish;
-
-    private PlayerMovement _playerMovement => GetComponent<PlayerMovement>();
-    private PlayerStackManager _playerStackManager => GetComponent<PlayerStackManager>();
-    private bool onFirstClick = true;
-
-    private void Awake()
+    [RequireComponent(typeof(PlayerMovement), typeof(PlayerStackManager))]
+    public class Player : Singleton<Player> //MonoBehaviour singleton'a çevirdim.
     {
-        InputManager.Instance.OnClick += OnFirstClick;
-        InputManager.Instance.OnSwerve += OnSwerve;
-    }
+        public bool PlayerCanMove;
+        public event EventHandler OnFinish;
 
-    private void Update()
-    {
-        if (PlayerCanMove)
+        private PlayerMovement _playerMovement => GetComponent<PlayerMovement>();
+        private PlayerStackManager _playerStackManager => GetComponent<PlayerStackManager>();
+        private bool onFirstClick = true;
+
+        private void Awake()
         {
-            _playerMovement.MoveForward();
+            InputManager.Instance.OnClick += OnFirstClick;
+            InputManager.Instance.OnSwerve += OnSwerve;
         }
-    }
 
-    public void OnWin()
-    {
-        OnFinish?.Invoke(this, EventArgs.Empty);
-    }
-
-    public float GetPlayerZPosition()
-    {
-        return transform.position.z;
-    }
-
-    private void OnSwerve(object sender, Vector2 e)
-    {
-        if (PlayerCanMove)
-            _playerMovement.MoveHorizontal(e);
-    }
-
-    private void OnFirstClick(object sender, bool e)
-    {
-        if (onFirstClick)
+        private void Update()
         {
-            onFirstClick = false;
-            PlayerCanMove = !PlayerCanMove;
+            if (PlayerCanMove)
+            {
+                _playerMovement.MoveForward();
+            }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out CollectableBase collectable))
+        public void OnWin()
         {
-            _playerStackManager.CollectBead(collectable);
+            OnFinish?.Invoke(this, EventArgs.Empty);
+        }
+
+        public float GetPlayerZPosition()
+        {
+            return transform.position.z;
+        }
+
+        private void OnSwerve(object sender, Vector2 e)
+        {
+            if (PlayerCanMove)
+                _playerMovement.MoveHorizontal(e);
+        }
+
+        private void OnFirstClick(object sender, bool e)
+        {
+            if (onFirstClick)
+            {
+                onFirstClick = false;
+                PlayerCanMove = !PlayerCanMove;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out CollectableBase collectable))
+            {
+                _playerStackManager.CollectBead(collectable);
+            }
+
+            if (other.TryGetComponent(out GateModelChanger gate))
+            {
+                ModelManager.Instance.FireGateEnterEvent(gate.ModelType);
+            }
         }
     }
 }

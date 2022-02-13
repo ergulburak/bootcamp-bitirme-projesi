@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Game.Scripts.MeshChangerSystem;
 using UnityEngine;
 
-public class GateBase : MonoBehaviour
+namespace Game.Scripts.Gates
 {
-    [SerializeField] private ModelType modelType;
-
-    private void OnTriggerEnter(Collider other)
+    public class GateBase : MonoBehaviour
     {
-        if (other.TryGetComponent(out Player player))
-        {
-            ModelManager.Instance.OnOnGateEnterEvent(modelType);
-        }
+        public ModelType ModelType;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Scripts.MeshChangerSystem;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -19,11 +20,11 @@ namespace Game.Scripts.Collectables
             collectableModelSets.ForEach(x =>
             {
                 x.gameObject.SetActive(false);
-                if (x.Type == activeModelSet.Type)
-                {
-                    x.gameObject.SetActive(true);
-                    ChangeModel(activeBeadLevel);
-                }
+
+                if (x.Type != activeModelSet.Type) return;
+
+                x.gameObject.SetActive(true);
+                ChangeModel(activeBeadLevel);
             });
         }
 

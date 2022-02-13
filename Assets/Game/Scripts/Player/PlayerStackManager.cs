@@ -25,8 +25,8 @@ namespace Game.Scripts.Player
 
             collectableTransform.SetParent(transformPoint);
 
-            var collectableCollider = collectable.GetComponent<Collider>();
-            collectableCollider.enabled = false;
+            //var collectableCollider = collectable.GetComponent<Collider>();
+            //collectableCollider.enabled = false;
 
             stackPoints.Remove(transformPoint);
             filledStackPoints.Add(transformPoint);

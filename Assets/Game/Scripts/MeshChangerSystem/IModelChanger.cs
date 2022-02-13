@@ -1,4 +1,7 @@
-public interface IModelChanger
+namespace Game.Scripts.MeshChangerSystem
 {
-    public void ChangeMeshType(ModelType modelType);
+    public interface IModelChanger
+    {
+        public void ChangeModelSet(object sender, ModelType modelType);
+    }
 }

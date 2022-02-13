@@ -1,12 +1,14 @@
 ﻿using System;
-using UnityEngine;
 
-public class ModelManager : Singleton<ModelManager>
+namespace Game.Scripts.MeshChangerSystem
 {
-    public event EventHandler<ModelType> OnGateEnterEvent;
-
-    public void OnOnGateEnterEvent(ModelType e)
+    public class ModelManager : Singleton<ModelManager>
     {
-        OnGateEnterEvent?.Invoke(this, e);
+        public event EventHandler<ModelType> OnGateEnterEvent;
+
+        public void FireGateEnterEvent(ModelType e)
+        {
+            OnGateEnterEvent?.Invoke(this, e);
+        }
     }
 }
