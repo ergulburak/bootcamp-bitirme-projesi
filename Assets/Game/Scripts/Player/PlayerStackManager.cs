@@ -33,6 +33,7 @@ namespace Game.Scripts.Player
             filledPoints.Add(transformPoint, collectable);
             collectableTransform.DOLocalMove(Vector3.zero, collectDuration);
             collectableTransform.DOLocalRotate(Vector3.zero, collectDuration);
+            collectableTransform.DOScale(Vector3.one, collectDuration);
         }
 
         public void ThrowBead()
