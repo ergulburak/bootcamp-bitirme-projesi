@@ -9,16 +9,13 @@ using System;
 
 public class UIManager : Singleton<UIManager>
 {
-    [FoldoutGroup("Panels")]
-    [SerializeField]
+    [FoldoutGroup("Panels")] [SerializeField]
     private GameObject prepareGamePanel;
 
-    [FoldoutGroup("Panels")]
-    [SerializeField]
+    [FoldoutGroup("Panels")] [SerializeField]
     private GameObject mainGamePanel;
 
-    [FoldoutGroup("Panels")]
-    [SerializeField]
+    [FoldoutGroup("Panels")] [SerializeField]
     private GameObject winGamePanel;
 
     public event EventHandler OnGameStart;
@@ -41,6 +38,12 @@ public class UIManager : Singleton<UIManager>
         SceneManager.LoadScene(currenScene.buildIndex);
     }
 
+    public void NextLevel()
+    {
+        // Düzenlenecek
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void OpenInGamePanel()
     {
         prepareGamePanel.SetActive(false);
@@ -54,5 +57,4 @@ public class UIManager : Singleton<UIManager>
         winGamePanel.SetActive(true);
         mainGamePanel.SetActive(false);
     }
-
 }
