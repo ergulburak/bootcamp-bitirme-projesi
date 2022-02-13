@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using Game.Scripts.Collectables;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Game.Scripts.Player
@@ -13,8 +14,7 @@ namespace Game.Scripts.Player
 
         [SerializeField] private float collectDuration;
 
-
-        private List<Transform> filledStackPoints = new List<Transform>();
+        private Dictionary<Transform, CollectableBase> filledPoints = new Dictionary<Transform, CollectableBase>();
 
         public void CollectBead(CollectableBase collectable)
         {
@@ -29,9 +29,24 @@ namespace Game.Scripts.Player
             //collectableCollider.enabled = false;
 
             stackPoints.Remove(transformPoint);
-            filledStackPoints.Add(transformPoint);
+            filledPoints.Add(transformPoint, collectable);
             collectableTransform.DOLocalMove(Vector3.zero, collectDuration);
             collectableTransform.DOLocalRotate(Vector3.zero, collectDuration);
+        }
+
+        public void ThrowBead()
+        {
+            var collectable = filledPoints.First();
+
+            stackPoints.Insert(0, collectable.Key);
+            filledPoints.Remove(collectable.Key);
+
+            var targetCollectableTransform = collectable.Value.transform;
+            targetCollectableTransform.parent = null;
+            targetCollectableTransform.DOMoveY(8f, 1f).OnComplete(() =>
+            {
+                Destroy(targetCollectableTransform.gameObject);
+            });
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1449962448852750773}
   - component: {fileID: 2571721136384056848}
   - component: {fileID: 311981985828039386}
+  - component: {fileID: 6853068715862401639}
   m_Layer: 0
   m_Name: Big_Scissors
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2257602514875992847}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0.94, y: 0, z: 8.56}
-  m_LocalScale: {x: 0.73983955, y: 0.73983955, z: 0.73983955}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5741880468576169071}
   - {fileID: 4439888876555411954}
@@ -83,6 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &6853068715862401639
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257602514875992847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b38accac3732dc242b87d9da6467e540, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2390531578908407902
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using Game.Scripts.Collectables;
 using Game.Scripts.Gates;
 using Game.Scripts.MeshChangerSystem;
+using Game.Scripts.Obstacle;
 using UnityEngine;
 
 namespace Game.Scripts.Player
@@ -65,6 +66,11 @@ namespace Game.Scripts.Player
             if (other.TryGetComponent(out GateModelChanger gate))
             {
                 ModelManager.Instance.FireGateEnterEvent(gate.ModelType);
+            }
+
+            if (other.TryGetComponent(out ObstacleBase obstacle))
+            {
+                _playerStackManager.ThrowBead();
             }
         }
     }
